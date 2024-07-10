@@ -1,0 +1,36 @@
+{
+  "name": "@maxwell-zhai/wm_springboot",
+  "version": "1.1.5",
+  "description": "",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "package.json",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "prepare": "npm run build"
+  },
+  "bin": {
+    "wmstyle": "dist/cli.js"
+  },
+  "author": "maxwell",
+  "license": "ISC",
+  "dependencies": {
+    "@types/eslint": "^8.56.10",
+    "@typescript-eslint/eslint-plugin": "^7.16.0",
+    "@typescript-eslint/parser": "^7.16.0",
+    "commander": "^12.1.0",
+    "eslint": "8.49.0",
+    "prettier": "^3.3.2",
+    "stylelint": "^16.6.1",
+    "stylelint-config-standard": "^36.0.1",
+    "stylelint-config-standard-scss": "^13.1.0",
+    "typescript": "^5.5.3"
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.10"
+  }
+}
