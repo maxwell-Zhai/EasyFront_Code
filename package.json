@@ -1,6 +1,6 @@
 {
-  "name": "@maxwell-zhai/wm_springboot",
-  "version": "1.1.5",
+  "name": "@wm-zhai/wm_springboot",
+  "version": "1.0.17",
   "description": "",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -10,8 +10,8 @@
     "README.md"
   ],
   "scripts": {
-    "build": "tsc",
-    "prepare": "npm run build"
+    "prepare": "husky",
+    "build": "tsc"
   },
   "bin": {
     "wmstyle": "dist/cli.js"
@@ -19,18 +19,27 @@
   "author": "maxwell",
   "license": "ISC",
   "dependencies": {
+    "@commitlint/cli": "^19.3.0",
     "@types/eslint": "^8.56.10",
+    "@types/glob": "^8.1.0",
     "@typescript-eslint/eslint-plugin": "^7.16.0",
     "@typescript-eslint/parser": "^7.16.0",
     "commander": "^12.1.0",
+    "commitizen": "^4.3.0",
+    "commitlint-config-gitmoji": "^2.3.1",
     "eslint": "8.49.0",
+    "glob": "^11.0.0",
+    "husky": "^9.0.11",
     "prettier": "^3.3.2",
     "stylelint": "^16.6.1",
     "stylelint-config-standard": "^36.0.1",
-    "stylelint-config-standard-scss": "^13.1.0",
+    "stylelint-config-standard-less": "^3.0.1",
     "typescript": "^5.5.3"
   },
   "devDependencies": {
-    "@types/node": "^20.14.10"
+    "@commitlint/types": "^19.0.3",
+    "@types/node": "^20.14.10",
+    "chalk": "4.1.2",
+    "word-wrap": "^1.2.5"
   }
 }

@@ -1,4 +1,27 @@
 "use strict";
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
+};
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
@@ -6,6 +29,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const commander_1 = require("commander");
 const child_process_1 = require("child_process");
 const path_1 = __importDefault(require("path"));
+const glob = __importStar(require("glob"));
+const commit_config_1 = __importDefault(require("./commit.config"));
 const program = new commander_1.Command();
 const runCommand = (command) => {
     try {
@@ -17,8 +42,15 @@ const runCommand = (command) => {
     }
 };
 program
+    .command('init-hooks')
+    .description('初始化hooks')
+    .action(() => {
+    runCommand(`husky init`);
+    (0, child_process_1.execSync)('echo pnpm run commitlint > .husky/commit-msg');
+});
+program
     .command('eslint [files...]')
-    .description('Run ESLint on specified files or default to src/**/*.ts')
+    .description('执行eslint检查src目录下的所有ts文件')
     .action((files) => {
     const cwd = process.cwd();
     const fileList = files.length > 0 ? files.join(' ') : `${cwd}/src/**/*.ts`;
@@ -26,7 +58,7 @@ program
 });
 program
     .command('prettier [files...]')
-    .description('Run Prettier on specified files or default to src/**/*.ts')
+    .description('执行prettier格式化src目录下的所有ts文件')
     .action((files) => {
     const cwd = process.cwd();
     const fileList = files.length > 0 ? files.join(' ') : `${cwd}/src/**/*.ts`;
@@ -34,10 +66,43 @@ program
 });
 program
     .command('stylelint [files...]')
-    .description('Run Stylelint on specified files or default to src/**/*.less')
+    .description('执行stylelint检查根目录下的所有less文件')
     .action((files) => {
     const cwd = process.cwd();
-    const fileList = files.length > 0 ? files.join(' ') : `${cwd}/src/**/*.less`;
-    runCommand(`stylelint ${fileList} --config ${path_1.default.resolve(__dirname, 'stylelint.config.js')}`);
+    const patterns = files.length ? files : [`${cwd}/**/*.less`];
+    const filesToLint = [];
+    patterns.forEach((pattern) => {
+        glob.sync(pattern).forEach((file) => {
+            filesToLint.push(path_1.default.resolve(file));
+        });
+    });
+    if (filesToLint.length === 0) {
+        console.log('No files found to lint.');
+        return;
+    }
+    const configPath = path_1.default.resolve(__dirname, 'stylelint.config.js');
+    const command = `stylelint --config ${configPath} ${filesToLint.join(' ')}`;
+    (0, child_process_1.exec)(command, (error, stdout, stderr) => {
+        if (error) {
+            console.error(`Error: ${stderr}`);
+            process.exit(1);
+        }
+        else {
+            console.log(stdout);
+        }
+    });
+});
+program
+    .command('commit')
+    .description('使用commitizen提交代码')
+    .action(() => {
+    process.argv.pop();
+    (0, commit_config_1.default)();
+});
+program
+    .command('commitlint')
+    .description('使用commitlint检查提交信息')
+    .action((str, options) => {
+    runCommand(`commitlint --config ${path_1.default.resolve(__dirname, 'commitlint.config.js')} --edit`);
 });
 program.parse(process.argv);
