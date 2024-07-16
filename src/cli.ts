@@ -24,6 +24,15 @@ program
   });
 
 program
+  .command('release')
+  .description('使用release-it发布版本')
+  .action(() => {
+    runCommand(
+      `release-it --config ${path.resolve(__dirname, '.release-it.js')}`,
+    );
+  });
+
+program
   .command('eslint [files...]')
   .description('执行eslint检查src目录下的所有ts文件')
   .action((files) => {

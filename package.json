@@ -11,7 +11,8 @@
   ],
   "scripts": {
     "prepare": "husky",
-    "build": "tsc"
+    "build": "tsc",
+    "release": "release-it --config src/.release-it.ts"
   },
   "bin": {
     "wmstyle": "dist/cli.js"
@@ -20,6 +21,7 @@
   "license": "ISC",
   "dependencies": {
     "@commitlint/cli": "^19.3.0",
+    "@release-it/conventional-changelog": "^8.0.1",
     "@types/eslint": "^8.56.10",
     "@types/glob": "^8.1.0",
     "@typescript-eslint/eslint-plugin": "^7.16.0",
@@ -31,6 +33,7 @@
     "glob": "^11.0.0",
     "husky": "^9.0.11",
     "prettier": "^3.3.2",
+    "release-it": "^17.6.0",
     "stylelint": "^16.6.1",
     "stylelint-config-standard": "^36.0.1",
     "stylelint-config-standard-less": "^3.0.1",
