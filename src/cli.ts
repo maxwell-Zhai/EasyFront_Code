@@ -3,6 +3,7 @@ import { exec, execSync } from 'child_process';
 import path from 'path';
 import * as glob from 'glob';
 import cz from './commit.config'
+import { Commitlint, ReleaseIt, Eslint, Stylelint, Husky } from './utils/commandClass';
 
 const program = new Command();
 
@@ -19,7 +20,8 @@ program
   .command('init-hooks')
   .description('初始化hooks')
   .action(() => {
-    runCommand(`husky init`);
+    const husky = new Husky('husky');
+    husky.runCommand(`init`);
     execSync('echo pnpm run lint-commit > .husky/commit-msg');
   });
 
@@ -27,7 +29,8 @@ program
   .command('release')
   .description('使用release-it发布版本')
   .action(() => {
-    runCommand(
+    const release = new ReleaseIt('release-it');
+    release.runCommand(
       `release-it --config ${path.resolve(__dirname, '.release-it.js')}`,
     );
   });
@@ -70,17 +73,10 @@ program
       return;
     }
 
+    const stylelint = new Stylelint('stylelint');
     const configPath = path.resolve(__dirname, 'stylelint.config.js');
 
-    const command = `stylelint --config ${configPath} ${filesToLint.join(' ')}`;
-    exec(command, (error, stdout, stderr) => {
-      if (error) {
-        console.error(`Error: ${stderr}`);
-        process.exit(1);
-      } else {
-        console.log(stdout);
-      }
-    });
+    stylelint.runCommand(`stylelint --config ${configPath} ${filesToLint.join(' ')}`);
   });
 
 program
@@ -95,8 +91,9 @@ program
   .command('commitlint')
   .description('使用commitlint检查提交信息')
   .action((str,options) => {
-    runCommand(
-      `commitlint --config ${path.resolve(__dirname, 'lint-commit/commitlint.config.js')} --edit`,
+    const commitlint = new Commitlint('@commitlint/cli');
+    commitlint.runCommand(
+      `--config ${path.resolve(__dirname, 'lint-commit/commitlint.config.js')} --edit`,
     );
   });
 

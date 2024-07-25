@@ -31,6 +31,7 @@ const child_process_1 = require("child_process");
 const path_1 = __importDefault(require("path"));
 const glob = __importStar(require("glob"));
 const commit_config_1 = __importDefault(require("./commit.config"));
+const commandClass_1 = require("./utils/commandClass");
 const program = new commander_1.Command();
 const runCommand = (command) => {
     try {
@@ -45,14 +46,16 @@ program
     .command('init-hooks')
     .description('初始化hooks')
     .action(() => {
-    runCommand(`husky init`);
+    const husky = new commandClass_1.Husky('husky');
+    husky.runCommand(`init`);
     (0, child_process_1.execSync)('echo pnpm run lint-commit > .husky/commit-msg');
 });
 program
     .command('release')
     .description('使用release-it发布版本')
     .action(() => {
-    runCommand(`release-it --config ${path_1.default.resolve(__dirname, '.release-it.js')}`);
+    const release = new commandClass_1.ReleaseIt('release-it');
+    release.runCommand(`release-it --config ${path_1.default.resolve(__dirname, '.release-it.js')}`);
 });
 program
     .command('eslint [files...]')
@@ -86,17 +89,9 @@ program
         console.log('No files found to lint.');
         return;
     }
+    const stylelint = new commandClass_1.Stylelint('stylelint');
     const configPath = path_1.default.resolve(__dirname, 'stylelint.config.js');
-    const command = `stylelint --config ${configPath} ${filesToLint.join(' ')}`;
-    (0, child_process_1.exec)(command, (error, stdout, stderr) => {
-        if (error) {
-            console.error(`Error: ${stderr}`);
-            process.exit(1);
-        }
-        else {
-            console.log(stdout);
-        }
-    });
+    stylelint.runCommand(`stylelint --config ${configPath} ${filesToLint.join(' ')}`);
 });
 program
     .command('commit')
@@ -109,6 +104,7 @@ program
     .command('commitlint')
     .description('使用commitlint检查提交信息')
     .action((str, options) => {
-    runCommand(`commitlint --config ${path_1.default.resolve(__dirname, 'lint-commit/commitlint.config.js')} --edit`);
+    const commitlint = new commandClass_1.Commitlint('@commitlint/cli');
+    commitlint.runCommand(`--config ${path_1.default.resolve(__dirname, 'lint-commit/commitlint.config.js')} --edit`);
 });
 program.parse(process.argv);

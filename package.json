@@ -1,7 +1,25 @@
 {
   "name": "@maxwell-zhai/easyfront",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "一站式代码工程规范工具",
+  "keywords": [
+    "frontend",
+    "engineering",
+    "code-quality",
+    "linting",
+    "eslint",
+    "prettier",
+    "stylelint",
+    "code-style",
+    "commitizen",
+    "husky",
+    "commit-hooks",
+    "version-control",
+    "release",
+    "configuration",
+    "tooling",
+    "workflow"
+  ],
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
@@ -13,12 +31,15 @@
     "prepare": "husky",
     "build": "tsc",
     "lint-commit": "easyfront commitlint",
-    "release": "release-it --config src/.release-it.ts"
+    "commit": "easyfront commit"
   },
   "bin": {
     "easyfront": "dist/cli.js"
   },
-  "author": "maxwell",
+  "author": "maxwell-zhai",
+  "contributors": [
+    "siroi"
+  ],
   "license": "MIT",
   "dependencies": {
     "@commitlint/cli": "^19",
