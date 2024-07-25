@@ -42,8 +42,8 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "@commitlint/cli": "^19",
-    "@commitlint/lint": "^19",
+    "@commitlint/cli": "19.3.0",
+    "@commitlint/lint": "19.2.2",
     "@commitlint/types": "^17",
     "@gitmoji/commit-types": "^1.1.5",
     "@gitmoji/parser-opts": "^1.4.0",
