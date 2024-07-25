@@ -1,7 +1,7 @@
 {
-  "name": "@wm-zhai/wm_springboot",
+  "name": "@maxwell-zhai/easyfront",
   "version": "1.0.0",
-  "description": "",
+  "description": "一站式代码工程规范工具",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
@@ -12,37 +12,39 @@
   "scripts": {
     "prepare": "husky",
     "build": "tsc",
+    "lint-commit": "easyfront commitlint",
     "release": "release-it --config src/.release-it.ts"
   },
   "bin": {
-    "wmstyle": "dist/cli.js"
+    "easyfront": "dist/cli.js"
   },
   "author": "maxwell",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
-    "@commitlint/cli": "^19.3.0",
-    "@release-it/conventional-changelog": "^8.0.1",
+    "@commitlint/cli": "^19",
+    "@commitlint/lint": "^19",
+    "@commitlint/types": "^17",
+    "@gitmoji/commit-types": "^1.1.5",
+    "@gitmoji/parser-opts": "^1.4.0",
+    "@release-it/conventional-changelog": "^7.0.0",
     "@types/eslint": "^8.56.10",
-    "@types/glob": "^8.1.0",
+    "@types/node": "^20.14.11",
     "@typescript-eslint/eslint-plugin": "^7.16.0",
     "@typescript-eslint/parser": "^7.16.0",
+    "chalk": "4.1.2",
     "commander": "^12.1.0",
     "commitizen": "^4.3.0",
     "commitlint-config-gitmoji": "^2.3.1",
+    "commitlint-plugin-gitmoji": "^2.2.6",
     "eslint": "8.49.0",
-    "glob": "^11.0.0",
     "husky": "^9.0.11",
     "prettier": "^3.3.2",
     "release-it": "^17.6.0",
     "stylelint": "^16.6.1",
     "stylelint-config-standard": "^36.0.1",
     "stylelint-config-standard-less": "^3.0.1",
-    "typescript": "^5.5.3"
-  },
-  "devDependencies": {
-    "@commitlint/types": "^19.0.3",
-    "@types/node": "^20.14.10",
-    "chalk": "4.1.2",
-    "word-wrap": "^1.2.5"
+    "typescript": "^5.5.3",
+    "word-wrap": "^1.2.5",
+    "@types/glob": "^8.1.0"
   }
 }

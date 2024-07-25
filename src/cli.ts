@@ -20,7 +20,7 @@ program
   .description('初始化hooks')
   .action(() => {
     runCommand(`husky init`);
-    execSync('echo pnpm run commitlint > .husky/commit-msg');
+    execSync('echo pnpm run lint-commit > .husky/commit-msg');
   });
 
 program
@@ -96,7 +96,7 @@ program
   .description('使用commitlint检查提交信息')
   .action((str,options) => {
     runCommand(
-      `commitlint --config ${path.resolve(__dirname, 'commitlint.config.js')} --edit`,
+      `commitlint --config ${path.resolve(__dirname, 'lint-commit/commitlint.config.js')} --edit`,
     );
   });
 

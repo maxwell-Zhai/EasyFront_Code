@@ -8,8 +8,11 @@
     "strict": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
-    "resolveJsonModule": true
+    "resolveJsonModule": true,
+    "moduleResolution": "Node",
+    "lib": ["ES2020"],
   },
   "include": ["src/**/*", "src/.release-it.ts"]
 }
+  
   
