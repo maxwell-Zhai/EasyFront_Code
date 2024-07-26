@@ -68,7 +68,6 @@
     "word-wrap": "^1.2.5"
   },
   "devDependencies": {
-    "@maxwell-zhai/easyfront": "^1.0.2",
     "@types/eslint": "^8.56.10",
     "@types/glob": "^8.1.0",
     "@types/node": "^20.14.11"
