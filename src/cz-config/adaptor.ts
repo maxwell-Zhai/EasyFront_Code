@@ -83,7 +83,7 @@ export const prompter = (
     {
       type: "list",
       name: "type",
-      message: "Select the type of change that you're committing:",
+      message: "选择此次提交的类型:",
       choices,
       default: options.defaultType,
     },
@@ -91,7 +91,7 @@ export const prompter = (
       type: "input",
       name: "scope",
       message:
-        "What is the scope of this change (e.g. component or file name): (press enter to skip)",
+        "这一变化的范围是什么 (e.g. component or file name): (press enter to skip)",
       default: options.defaultScope,
       filter(value: string) {
         return options.disableScopeLowerCase
@@ -104,9 +104,9 @@ export const prompter = (
       name: "subject",
       message(answers: AnswersInterface) {
         return (
-          "Write a short, imperative tense description of the change (max " +
+          "对变更写一个简短的描述 (max " +
           maxSummaryLength(options, answers) +
-          " chars):\n"
+          " 字符):\n"
         );
       },
       default: options.defaultSubject,
@@ -144,13 +144,13 @@ export const prompter = (
       type: "input",
       name: "body",
       message:
-        "Provide a longer description of the change: (press enter to skip)\n",
+        "提供更长的变更描述: (press enter to skip)\n",
       default: options.defaultBody,
     },
     {
       type: "confirm",
       name: "isBreaking",
-      message: "Are there any breaking changes?",
+      message: "有什么破坏性改动吗?",
       default: false,
     },
     {
