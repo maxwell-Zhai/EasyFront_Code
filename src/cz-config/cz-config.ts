@@ -1,60 +1,65 @@
 export const types = {
     feat: {
-      description: "A new feature",
+      description: "增加新的特征或功能",
       title: "Features",
       emoji: "✨",
     },
     fix: {
-      description: "A bug fix",
+      description: "修复 bug",
       title: "Bug Fixes",
       emoji: "🐛",
     },
     docs: {
-      description: "Documentation only changes",
+      description: "对文档进行了修改",
       title: "Documentation",
       emoji: "📝",
     },
     style: {
       description:
-        "Changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, etc)",
+        "不影响代码含义的修改，比如空格、格式化、缺失的分号等",
       title: "Styles",
-      emoji: "💎",
+      emoji: "🎨",
     },
     refactor: {
-      description: "A code change that neither fixes a bug nor adds a feature",
+      description: "既不是修复 bug 也不是添加特征的代码重构",
       title: "Code Refactoring",
       emoji: "♻️",
     },
     perf: {
-      description: "A code change that improves performance",
+      description: "提高性能的代码更改",
       title: "Performance Improvements",
-      emoji: "📈",
+      emoji: "⚡️",
     },
     test: {
-      description: "Adding missing tests or correcting existing tests",
+      description: "增加确实的测试或者矫正已存在的测试",
       title: "Tests",
-      emoji: "🧪",
+      emoji: "✅",
     },
     build: {
       description:
-        "Changes that affect the build system or external dependencies (example scopes: gulp, broccoli, npm)",
+        "对构建系统或者外部依赖项进行了修改 (例如: gulp, broccoli, npm)",
       title: "Builds",
       emoji: "🏗️",
     },
     ci: {
       description:
-        "Changes to our CI configuration files and scripts (example scopes: Travis, Circle, BrowserStack, SauceLabs)",
+        "对 CI 配置文件或脚本进行了修改(例如: Travis, Circle, BrowserStack, SauceLabs)",
       title: "Continuous Integrations",
-      emoji: "📦",
+      emoji: "👷",
     },
     chore: {
-      description: "Other changes that don't modify src or test files",
+      description: "非功能性变更或对代码库进行的一般维护工作",
       title: "Chores",
-      emoji: "🧹",
+      emoji: "🗑️",
     },
     revert: {
-      description: "Reverts a previous commit",
+      description: "代码回滚",
       title: "Reverts",
       emoji: "⏪️",
+    },
+    release: {
+      description: "发布新版本",
+      title: "Releases",
+      emoji: "🔖",
     },
 };

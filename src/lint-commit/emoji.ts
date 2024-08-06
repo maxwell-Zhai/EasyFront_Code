@@ -9,8 +9,8 @@ const { Error } = RuleConfigSeverity;
 const rules: QualifiedRules = {
   // gitmoji 规则
   'start-with-gitmoji': [Error, 'always'],
-  // 使用 Angular 的类型
-  'type-enum': [Error, 'always', commitTypes],
+  // 使用 Angular 的类型, 加入发版
+  'type-enum': [Error, 'always', [...commitTypes, 'release']],
   // 内容以空行开始
   'body-leading-blank': [Error, 'always'],
   // 结尾以空行开始
