@@ -27,6 +27,9 @@
     "package.json",
     "README.md"
   ],
+  "repository": {
+    "url": "https://github.com/maxwell-Zhai/EasyFront_Code"
+  },
   "scripts": {
     "prepare": "husky",
     "build": "tsc",
