@@ -34,7 +34,8 @@
     "prepare": "husky",
     "build": "tsc",
     "lint-commit": "easyfront commitlint",
-    "commit": "easyfront commit"
+    "commit": "easyfront commit",
+    "release": "easyfront release"
   },
   "bin": {
     "easyfront": "dist/cli.js"
