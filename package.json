@@ -1,6 +1,6 @@
 {
   "name": "@maxwell-zhai/easyfront",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "一站式代码工程规范工具",
   "keywords": [
     "frontend",
@@ -27,6 +27,9 @@
     "package.json",
     "README.md"
   ],
+  "repository": {
+    "url": "https://github.com/maxwell-Zhai/EasyFront_Code"
+  },
   "scripts": {
     "prepare": "husky",
     "build": "tsc",
@@ -65,7 +68,9 @@
     "stylelint-config-standard": "^36.0.1",
     "stylelint-config-standard-less": "^3.0.1",
     "typescript": "^5.5.3",
-    "word-wrap": "^1.2.5"
+    "word-wrap": "^1.2.5",
+    "@types/glob": "^8.1.0",
+    "conventional-changelog-gitmoji-config": "^1.5.2"
   },
   "devDependencies": {
     "@types/eslint": "^8.56.10",
