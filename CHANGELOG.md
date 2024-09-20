@@ -1,5 +1,12 @@
 
 
+## 1.1.4 (2024-09-20)
+
+
+### ✨ Features
+
+* **prettier**: 更新 prettier 配置 ([9e83a1f](https://github.com/maxwell-Zhai/EasyFront_Code/commit/9e83a1f))
+
 ## 1.1.3 (2024-09-06)
 
 
