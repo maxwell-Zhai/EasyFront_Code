@@ -26,13 +26,16 @@ program
   });
 
 program
-  .command('release [options]')
+  .command('release <options> [otp]')
   .description('使用release-it发布版本, 支持 release-it 参数 config=[options]')
-  .action((options: string = "") => {
+  .action((options: string = "", otp: string = "") => {
     const release = new ReleaseIt('release-it');
     let option = "";
     if(options.indexOf('config') === 0){
       option = options.slice(7);
+    }
+    if(otp !== ""){
+      option = `${option} --plugins.release-it-pnpm.publishCommand='pnpm publish --access public --no-git-checks --tag $tag --otp=${otp}'`
     }
     release.runCommand(
       `release-it --config ${path.resolve(__dirname, '.release-it.js')} ${option}`,
