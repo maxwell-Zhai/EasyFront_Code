@@ -1,5 +1,28 @@
 
 
+## 1.2.1 (2025-06-25)
+
+
+### ⚡ Performance Improvements
+
+* **release**: Pnpm --> npm ([f2ac583](https://github.com/maxwell-Zhai/EasyFront_Code/commit/f2ac583))
+
+
+### ✨ Features
+
+* **release**: 增加 release 相关配置，调整为 pnpm (fix, closes [#8](https://github.com/maxwell-Zhai/EasyFront_Code/issues/8) [#8](https://github.com/maxwell-Zhai/EasyFront_Code/issues/8) ([c3c59e5](https://github.com/maxwell-Zhai/EasyFront_Code/commit/c3c59e5))
+
+
+### 🐛 Bug Fixes
+
+* **release**: 可选指令默认 “” ([e3755df](https://github.com/maxwell-Zhai/EasyFront_Code/commit/e3755df))
+* **release**: Need otp publish ([74fd125](https://github.com/maxwell-Zhai/EasyFront_Code/commit/74fd125))
+
+
+### 💥 BREAKING CHANGES
+
+* **release**: npm -> pnpm
+
 ## 1.1.4 (2024-09-20)
 
 
