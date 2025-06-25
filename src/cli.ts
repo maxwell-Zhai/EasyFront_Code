@@ -35,7 +35,8 @@ program
       option = options.slice(7);
     }
     if(otp !== ""){
-      option = `${option} --plugins.release-it-pnpm.publishCommand='pnpm publish --access public --no-git-checks --tag $tag --otp=${otp}'`
+      console.log(`暂不支持 otp`)
+      // option = `${option} --plugins.release-it-pnpm.publishCommand='pnpm publish --access public --no-git-checks --tag $tag --otp=${otp}'`
     }
     release.runCommand(
       `release-it --config ${path.resolve(__dirname, '.release-it.js')} ${option}`,
