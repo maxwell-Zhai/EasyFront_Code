@@ -11,6 +11,9 @@ const config: Config = {
     publish: true
   },
   plugins: {
+    "release-it-pnpm": {
+      publishCommand: "pnpm publish --access public --no-git-checks --tag $tag",
+    },
     "@release-it/conventional-changelog": {
       "infile": "CHANGELOG.md",
       "preset": "gitmoji-config",
