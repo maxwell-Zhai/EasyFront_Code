@@ -28,7 +28,7 @@ program
 program
   .command('release [options]')
   .description('使用release-it发布版本, 支持 release-it 参数 config=[options]')
-  .action((options: string) => {
+  .action((options: string = "") => {
     const release = new ReleaseIt('release-it');
     let option = "";
     if(options.indexOf('config') === 0){
